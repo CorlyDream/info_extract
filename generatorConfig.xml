@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry location="/home/corly/.m2/repository/mysql/mysql-connector-java/5.1.20/mysql-connector-java-5.1.20.jar" />
+  <context id="db2table">
+  	<property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+    <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+    <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/test?serverTimezone=CST&amp;characterEncoding=UTF8&amp;zeroDateTimeBehavior=convertToNull" driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+    <javaModelGenerator targetPackage="cc.corly.entity" targetProject="src/main/java">
+        <property name="trimStrings" value="true"/>   
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="sqlmap" targetProject="src/main/resources" />
+    <javaClientGenerator targetPackage="cc.corly.dao" targetProject="src/main/java" type="XMLMAPPER" />
+    <table tableName="default_value"></table>
+  </context>
+</generatorConfiguration>
