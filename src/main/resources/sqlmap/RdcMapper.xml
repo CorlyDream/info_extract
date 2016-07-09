@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.corly.dao.RdcMapper">
+  <resultMap id="BaseResultMap" type="cc.corly.entity.Rdc">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="capacity" jdbcType="REAL" property="capacity" />
+    <result column="sqm" jdbcType="REAL" property="sqm" />
+    <result column="struct" jdbcType="VARCHAR" property="struct" />
+    <result column="storagetype" jdbcType="VARCHAR" property="storagetype" />
+    <result column="coldtype" jdbcType="VARCHAR" property="coldtype" />
+    <result column="provinceid" jdbcType="INTEGER" property="provinceid" />
+    <result column="cityid" jdbcType="INTEGER" property="cityid" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="cellphone" jdbcType="VARCHAR" property="cellphone" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="powerConsume" jdbcType="REAL" property="powerconsume" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="audit" jdbcType="TINYINT" property="audit" />
+    <result column="mapping" jdbcType="VARCHAR" property="mapping" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.corly.entity.Rdc">
+    <result column="commit" jdbcType="LONGVARCHAR" property="commit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, address, addtime, type, capacity, sqm, struct, storagetype, coldtype, provinceid, 
+    cityid, contact, position, cellphone, phone, powerConsume, userid, audit, mapping
+  </sql>
+  <sql id="Blob_Column_List">
+    commit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from rdc
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rdc
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cc.corly.entity.Rdc">
+    insert into rdc (id, name, address, 
+      addtime, type, capacity, 
+      sqm, struct, storagetype, 
+      coldtype, provinceid, cityid, 
+      contact, position, cellphone, 
+      phone, powerConsume, userid, 
+      audit, mapping, commit
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{addtime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, #{capacity,jdbcType=REAL}, 
+      #{sqm,jdbcType=REAL}, #{struct,jdbcType=VARCHAR}, #{storagetype,jdbcType=VARCHAR}, 
+      #{coldtype,jdbcType=VARCHAR}, #{provinceid,jdbcType=INTEGER}, #{cityid,jdbcType=INTEGER}, 
+      #{contact,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{powerconsume,jdbcType=REAL}, #{userid,jdbcType=INTEGER}, 
+      #{audit,jdbcType=TINYINT}, #{mapping,jdbcType=VARCHAR}, #{commit,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cc.corly.entity.Rdc">
+    insert into rdc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="capacity != null">
+        capacity,
+      </if>
+      <if test="sqm != null">
+        sqm,
+      </if>
+      <if test="struct != null">
+        struct,
+      </if>
+      <if test="storagetype != null">
+        storagetype,
+      </if>
+      <if test="coldtype != null">
+        coldtype,
+      </if>
+      <if test="provinceid != null">
+        provinceid,
+      </if>
+      <if test="cityid != null">
+        cityid,
+      </if>
+      <if test="contact != null">
+        contact,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="cellphone != null">
+        cellphone,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="powerconsume != null">
+        powerConsume,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="audit != null">
+        audit,
+      </if>
+      <if test="mapping != null">
+        mapping,
+      </if>
+      <if test="commit != null">
+        commit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="capacity != null">
+        #{capacity,jdbcType=REAL},
+      </if>
+      <if test="sqm != null">
+        #{sqm,jdbcType=REAL},
+      </if>
+      <if test="struct != null">
+        #{struct,jdbcType=VARCHAR},
+      </if>
+      <if test="storagetype != null">
+        #{storagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="coldtype != null">
+        #{coldtype,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null">
+        #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null">
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="powerconsume != null">
+        #{powerconsume,jdbcType=REAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null">
+        #{audit,jdbcType=TINYINT},
+      </if>
+      <if test="mapping != null">
+        #{mapping,jdbcType=VARCHAR},
+      </if>
+      <if test="commit != null">
+        #{commit,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cc.corly.entity.Rdc">
+    update rdc
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="capacity != null">
+        capacity = #{capacity,jdbcType=REAL},
+      </if>
+      <if test="sqm != null">
+        sqm = #{sqm,jdbcType=REAL},
+      </if>
+      <if test="struct != null">
+        struct = #{struct,jdbcType=VARCHAR},
+      </if>
+      <if test="storagetype != null">
+        storagetype = #{storagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="coldtype != null">
+        coldtype = #{coldtype,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null">
+        provinceid = #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null">
+        cityid = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null">
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="powerConsume != null">
+        powerConsume = #{powerConsume,jdbcType=REAL},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null">
+        audit = #{audit,jdbcType=TINYINT},
+      </if>
+      <if test="mapping != null">
+        mapping = #{mapping,jdbcType=VARCHAR},
+      </if>
+      <if test="commit != null">
+        commit = #{commit,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cc.corly.entity.Rdc">
+    update rdc
+    set name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      capacity = #{capacity,jdbcType=REAL},
+      sqm = #{sqm,jdbcType=REAL},
+      struct = #{struct,jdbcType=VARCHAR},
+      storagetype = #{storagetype,jdbcType=VARCHAR},
+      coldtype = #{coldtype,jdbcType=VARCHAR},
+      provinceid = #{provinceid,jdbcType=INTEGER},
+      cityid = #{cityid,jdbcType=INTEGER},
+      contact = #{contact,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      powerConsume = #{powerconsume,jdbcType=REAL},
+      userid = #{userid,jdbcType=INTEGER},
+      audit = #{audit,jdbcType=TINYINT},
+      mapping = #{mapping,jdbcType=VARCHAR},
+      commit = #{commit,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cc.corly.entity.Rdc">
+    update rdc
+    set name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      capacity = #{capacity,jdbcType=REAL},
+      sqm = #{sqm,jdbcType=REAL},
+      struct = #{struct,jdbcType=VARCHAR},
+      storagetype = #{storagetype,jdbcType=VARCHAR},
+      coldtype = #{coldtype,jdbcType=VARCHAR},
+      provinceid = #{provinceid,jdbcType=INTEGER},
+      cityid = #{cityid,jdbcType=INTEGER},
+      contact = #{contact,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      powerConsume = #{powerconsume,jdbcType=REAL},
+      userid = #{userid,jdbcType=INTEGER},
+      audit = #{audit,jdbcType=TINYINT},
+      mapping = #{mapping,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
