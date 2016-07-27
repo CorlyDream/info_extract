@@ -1,4 +1,4 @@
-package cc.corly.dao;
+package cc.corly.mapper;
 
 import cc.corly.entity.Rdc;
 
